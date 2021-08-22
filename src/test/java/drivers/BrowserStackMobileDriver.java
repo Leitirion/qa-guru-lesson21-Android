@@ -1,7 +1,7 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import config.MobileConfig;
+import config.BrowserStackConfig;
 import io.appium.java_client.android.AndroidDriver;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class BrowserStackMobileDriver implements WebDriverProvider {
 
-    static MobileConfig config = ConfigFactory.create(MobileConfig.class, System.getProperties());
+    static BrowserStackConfig config = ConfigFactory.create(BrowserStackConfig.class, System.getProperties());
 
     public static URL getBrowserstackUrl() {
         try {
@@ -28,10 +28,8 @@ public class BrowserStackMobileDriver implements WebDriverProvider {
         // Set your access credentials
         desiredCapabilities.setCapability("browserstack.user", config.getBrowserStackUser());
         desiredCapabilities.setCapability("browserstack.key", config.getBrowserStackKey());
-        System.out.println("login: "+config.getBrowserStackUser());
-        System.out.println("key: "+config.getBrowserStackKey());
         // Set URL of the application under test
-        desiredCapabilities.setCapability("app", "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
+        desiredCapabilities.setCapability("app", config.getBrowserStackApp());
 
         // Specify device and os_version for testing Samsung Galaxy Tab S3 Google Pixel 3
         desiredCapabilities.setCapability("device", "Google Pixel 3");

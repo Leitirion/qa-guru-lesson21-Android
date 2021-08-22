@@ -1,26 +1,19 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import config.BrowserStackConfig;
-import config.LocalConfig;
 import io.appium.java_client.android.AndroidDriver;
-import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+public class SelenoidDriver implements WebDriverProvider {
 
-public class LocalMobileDriver implements WebDriverProvider {
-
-    static LocalConfig config = ConfigFactory.create(LocalConfig.class, System.getProperties());
 
     public static URL getAppiumServerUrl() {
         try {
-            return new URL(config.getLocalUrl());
+            return new URL("https://user1:1234@selenoid.autotests.cloud:4444/wd/hub");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -30,23 +23,26 @@ public class LocalMobileDriver implements WebDriverProvider {
     public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
 
         desiredCapabilities.setCapability("platformName", "Android");
-//        desiredCapabilities.setCapability("deviceName", "emulator-5554");
-        desiredCapabilities.setCapability("deviceName", config.getLocalDevice());
-        desiredCapabilities.setCapability("version", config.getLocalOsVersion());
+        desiredCapabilities.setCapability("deviceName", "android");
+        desiredCapabilities.setCapability("version", "10.0");
         desiredCapabilities.setCapability("locale", "en");
         desiredCapabilities.setCapability("language", "en");
+        desiredCapabilities.setCapability("enableVNC", true);
+        desiredCapabilities.setCapability("enableVideo", true);
         desiredCapabilities.setCapability("appPackage", "org.wikipedia.alpha");
         desiredCapabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
-        desiredCapabilities.setCapability("app", getAbsolutePath(config.getLocalApp()));
-
+        desiredCapabilities.setCapability("app", apkUrl());
 
         return new AndroidDriver(getAppiumServerUrl(), desiredCapabilities);
     }
 
-    private String getAbsolutePath(String filePath) {
-        File file = new File(filePath);
-        assertTrue(file.exists(), filePath + " not found");
 
-        return file.getAbsolutePath();
+    private URL apkUrl() {
+        try {
+            return new URL("https://github.com/wikimedia/apps-android-wikipedia/releases/download/latest/app-alpha-universal-release.apk");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

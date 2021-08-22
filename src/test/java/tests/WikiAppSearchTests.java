@@ -1,4 +1,4 @@
-package tests.local;
+package tests;
 
 import io.appium.java_client.MobileBy;
 import org.junit.jupiter.api.DisplayName;
@@ -10,20 +10,19 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 
-@Tag("selenide_android")
-public class LocalWikiApkTest extends LocalTestBase {
+@Tag("selenide")
+public class WikiAppSearchTests extends BaseForTest {
 
     @Test
-    @DisplayName("Successful search in wikipedia android app")
+    @DisplayName("Wikipedia search test")
     void searchTest() {
         back();
-
         step("Type search", () -> {
             $(MobileBy.AccessibilityId("Search Wikipedia")).click();
-            $(MobileBy.id("org.wikipedia.alpha:id/search_src_text")).val("BrowserStack");
+            $(MobileBy.id("org.wikipedia.alpha:id/search_src_text")).val("Github");
         });
         step("Verify content found", () ->
-                $$(MobileBy.id("org.wikipedia.alpha:id/page_list_item_title"))
+                $$(MobileBy.id("org.wikipedia.alpha:id/search_results_container"))
                         .shouldHave(sizeGreaterThan(0)));
     }
 }

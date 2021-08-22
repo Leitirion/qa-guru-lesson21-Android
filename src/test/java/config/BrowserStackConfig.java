@@ -7,10 +7,10 @@ import static org.aeonbits.owner.Config.LoadType.MERGE;
 @Config.LoadPolicy(MERGE)
 @Config.Sources({
         "system:properties",
-        "classpath:local.properties"
+        "classpath:resources/browserstack.properties"
 })
 
-public interface MobileConfig extends Config {
+public interface BrowserStackConfig extends Config {
 
     @Key("browserstack.user")
     String getBrowserStackUser();
@@ -18,4 +18,6 @@ public interface MobileConfig extends Config {
     @Key("browserstack.key")
     String getBrowserStackKey();
 
+    @Key("browserstack.app")
+    String getBrowserStackApp();
 }
