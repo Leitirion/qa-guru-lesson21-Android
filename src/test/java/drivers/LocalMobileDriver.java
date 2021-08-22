@@ -29,7 +29,6 @@ public class LocalMobileDriver implements WebDriverProvider {
     public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
 
         desiredCapabilities.setCapability("platformName", "Android");
-//        desiredCapabilities.setCapability("deviceName", "emulator-5554");
         desiredCapabilities.setCapability("deviceName", config.getLocalDevice());
         desiredCapabilities.setCapability("version", config.getLocalOsVersion());
         desiredCapabilities.setCapability("locale", "en");
@@ -37,7 +36,6 @@ public class LocalMobileDriver implements WebDriverProvider {
         desiredCapabilities.setCapability("appPackage", "org.wikipedia.alpha");
         desiredCapabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
         desiredCapabilities.setCapability("app", getAbsolutePath(config.getLocalApp()));
-
 
         return new AndroidDriver(getAppiumServerUrl(), desiredCapabilities);
     }

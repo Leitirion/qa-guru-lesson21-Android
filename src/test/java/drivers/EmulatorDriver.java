@@ -37,7 +37,6 @@ public class EmulatorDriver implements WebDriverProvider {
         desiredCapabilities.setCapability("appActivity", "org.wikipedia.main.MainActivity");
         desiredCapabilities.setCapability("app", getAbsolutePath(config.getEmulatorApp()));
 
-
         return new AndroidDriver(getAppiumServerUrl(), desiredCapabilities);
     }
 
