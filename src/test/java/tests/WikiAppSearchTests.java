@@ -16,7 +16,7 @@ public class WikiAppSearchTests extends BaseForTest {
     @Test
     @DisplayName("Wikipedia search test")
     void searchTest() {
-        back();
+//        back();
         step("Type search", () -> {
             $(MobileBy.AccessibilityId("Search Wikipedia")).click();
             $(MobileBy.id("org.wikipedia.alpha:id/search_src_text")).val("Github");

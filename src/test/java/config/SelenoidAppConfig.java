@@ -13,7 +13,7 @@ import static org.aeonbits.owner.Config.LoadType.MERGE;
 public interface SelenoidAppConfig extends Config {
 
     @Key("selenoid.url")
-    @DefaultValue("https://user1:1234@selenoid.autotests.cloud:4444/wd/hub")
+    @DefaultValue("https://user1:1234@selenoid.autotests.cloud/wd/hub")
     String getSelenoidUrl();
 
     @Key("selenoid.device.name")
