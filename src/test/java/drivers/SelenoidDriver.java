@@ -24,7 +24,7 @@ public class SelenoidDriver implements WebDriverProvider {
 
         desiredCapabilities.setCapability("platformName", "Android");
         desiredCapabilities.setCapability("deviceName", "android");
-        desiredCapabilities.setCapability("version", "10.0");
+        desiredCapabilities.setCapability("version", "11.0");
         desiredCapabilities.setCapability("locale", "en");
         desiredCapabilities.setCapability("language", "en");
         desiredCapabilities.setCapability("enableVNC", true);

@@ -1,7 +1,7 @@
 # **Tests for guru.qa lesson #21**
 
 
-###Mobile tests for Android with Appium, APK, config files.
+###Mobile tests for Android with Appium, AVD, config files.
 
 ---
 1) Create ```.properties``` files for ```browsertack```, ```local```, ```emulator``` in ```src/test/java/resources```

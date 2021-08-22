@@ -28,12 +28,14 @@ public class BrowserStackMobileDriver implements WebDriverProvider {
         // Set your access credentials
         desiredCapabilities.setCapability("browserstack.user", config.getBrowserStackUser());
         desiredCapabilities.setCapability("browserstack.key", config.getBrowserStackKey());
+        System.out.println("login: "+config.getBrowserStackUser());
+        System.out.println("key: "+config.getBrowserStackKey());
         // Set URL of the application under test
         desiredCapabilities.setCapability("app", config.getBrowserStackApp());
-
+        System.out.println("key: "+config.getBrowserStackApp());
         // Specify device and os_version for testing Samsung Galaxy Tab S3 Google Pixel 3
-        desiredCapabilities.setCapability("device", "Google Pixel 3");
-        desiredCapabilities.setCapability("os_version", "9.0");
+        desiredCapabilities.setCapability("device", "Google Pixel 4");
+        desiredCapabilities.setCapability("os_version", "11.0");
 
         // Set other BrowserStack capabilities
         desiredCapabilities.setCapability("project", "JavaProject");
