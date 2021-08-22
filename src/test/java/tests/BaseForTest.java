@@ -5,6 +5,7 @@ import drivers.BrowserStackMobileDriver;
 import drivers.EmulatorDriver;
 import drivers.LocalMobileDriver;
 
+import drivers.SelenoidDriver;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.Config;
 import org.aeonbits.owner.ConfigFactory;
@@ -23,7 +24,6 @@ public class BaseForTest {
     })
 
     public interface DeviceHost extends Config {
-
         @Key("deviceHost")
         String getDeviceHost();
     }
@@ -43,6 +43,9 @@ public class BaseForTest {
                 break;
             case "emulator":
                 Configuration.browser = EmulatorDriver.class.getName();
+                break;
+            case "selenoid":
+                Configuration.browser = SelenoidDriver.class.getName();
                 break;
             default:
                 Configuration.browser = LocalMobileDriver.class.getName();

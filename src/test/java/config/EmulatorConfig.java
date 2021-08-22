@@ -20,11 +20,11 @@ public interface EmulatorConfig extends Config {
     @DefaultValue("http://127.0.0.1:4723/wd/hub")
     String getEmulatorUrl();
 
-    @Key("local.device.name")
+    @Key("emulator.device.name")
     @DefaultValue("Pixel_4_API_30")
     String getEmulatorDevice();
 
-    @Key("local.os.version")
+    @Key("emulator.os.version")
     @DefaultValue("11.0")
     String getEmulatorOsVersion();
 }

@@ -35,10 +35,10 @@
 2) ```emulator.properties```
 
     ```bash
-    local.app=src/test/resources/app-alpha-universal-release.apk
-    local.url=http://127.0.0.1:4723/wd/hub
-    local.device.name=Pixel_4_API_30
-    local.os.version=11.0
+    emulator.app=src/test/resources/app-alpha-universal-release.apk
+    emulator.url=http://127.0.0.1:4723/wd/hub
+    emulator.device.name=Pixel_4_API_30
+    emulator.os.version=11.0
     ```
 
 

@@ -1,7 +1,9 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
+import config.SelenoidAppConfig;
 import io.appium.java_client.android.AndroidDriver;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -10,10 +12,11 @@ import java.net.URL;
 
 public class SelenoidDriver implements WebDriverProvider {
 
+    static SelenoidAppConfig config = ConfigFactory.create(SelenoidAppConfig.class, System.getProperties());
 
     public static URL getAppiumServerUrl() {
         try {
-            return new URL("https://user1:1234@selenoid.autotests.cloud:4444/wd/hub");
+            return new URL(config.getSelenoidUrl());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -23,8 +26,8 @@ public class SelenoidDriver implements WebDriverProvider {
     public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
 
         desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("deviceName", "android");
-        desiredCapabilities.setCapability("version", "11.0");
+        desiredCapabilities.setCapability("deviceName", config.getSelenoidDeviceName());
+        desiredCapabilities.setCapability("version", config.getSelenoidOsVersion());
         desiredCapabilities.setCapability("locale", "en");
         desiredCapabilities.setCapability("language", "en");
         desiredCapabilities.setCapability("enableVNC", true);

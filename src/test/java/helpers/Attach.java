@@ -14,6 +14,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.logging.LogType.BROWSER;
 
 public class Attach {
+
     @Attachment(value = "{attachName}", type = "text/plain")
     public static String attachAsText(String attachName, String message) {
         return message;
@@ -32,7 +33,7 @@ public class Attach {
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
     public static String attachVideo(String sessionId) {
         return "<html><body><video width='100%' height='100%' controls autoplay><source src='"
-                + Browserstack.videoUrl(sessionId)
+                + getVideoUrl(sessionId)
                 + "' type='video/mp4'></video></body></html>";
     }
 

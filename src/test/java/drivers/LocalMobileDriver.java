@@ -1,7 +1,6 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import config.BrowserStackConfig;
 import config.LocalConfig;
 import io.appium.java_client.android.AndroidDriver;
 import org.aeonbits.owner.ConfigFactory;
