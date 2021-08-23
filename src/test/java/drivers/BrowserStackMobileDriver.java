@@ -32,9 +32,9 @@ public class BrowserStackMobileDriver implements WebDriverProvider {
         // Set URL of the application under test
         desiredCapabilities.setCapability("app", config.getBrowserStackApp());
 
-        // Specify device and os_version for testing Samsung Galaxy Tab S3 Google Pixel 3
-        desiredCapabilities.setCapability("device", "Google Pixel 3");
-        desiredCapabilities.setCapability("os_version", "9.0");
+        // Specify device and os_version for testing Samsung Galaxy Tab S3 Google Pixel 4
+        desiredCapabilities.setCapability("device", "Google Pixel 4");
+        desiredCapabilities.setCapability("os_version", "11.0");
 
         // Set other BrowserStack capabilities
         desiredCapabilities.setCapability("project", "JavaProject");

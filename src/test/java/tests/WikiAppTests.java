@@ -38,7 +38,5 @@ public class WikiAppTests extends BaseForTest{
         step("Search Wikipedia should be appear", () -> {
             $( $(MobileBy.AccessibilityId("Search Wikipedia")).shouldBe(appear));
         });
-
-
     }
 }
